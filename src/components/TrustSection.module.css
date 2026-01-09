@@ -1,0 +1,37 @@
+.trust {
+    background-color: var(--color-surface);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    transition: transform var(--transition-fast);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background-color: var(--color-surface-hover);
+}
+
+.icon {
+    margin-bottom: 1.5rem;
+    color: var(--color-accent);
+}
+
+.card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+}
+
+.card p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+}
