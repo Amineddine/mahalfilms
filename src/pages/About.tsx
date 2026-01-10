@@ -1,6 +1,5 @@
 import styles from './About.module.css';
 import { Hero } from '../components/Hero';
-import { SEO } from '../components/SEO';
 
 const founders = [
     {
@@ -20,10 +19,6 @@ const founders = [
 export const About = () => {
     return (
         <div className={styles.aboutPage}>
-            <SEO
-                title="About Us - Film Production Services"
-                description="Founded by films veterans Gilles Castera and Aziz Hamichi, Mahal Films offers expert production services, location scouting, and government authorization handling in Morocco."
-            />
             <Hero
                 videoSrc="/The Amateur _ Official Trailer.mp4"
                 title="About Mahal Films"

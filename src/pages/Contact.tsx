@@ -2,17 +2,12 @@ import { Mail, Phone, MapPin, CheckCircle } from 'lucide-react';
 import { Button } from '../components/Button';
 import styles from './Contact.module.css';
 import { useForm, ValidationError } from '@formspree/react';
-import { SEO } from '../components/SEO';
 
 export const Contact = () => {
     const [state, handleSubmit] = useForm("mkoowkqn");
 
     return (
         <div className="container section">
-            <SEO
-                title="Contact Us - Production Support"
-                description="Contact Mahal Films for your next production in Morocco. We provide fast quotes and logistical support for shoots in Marrakech, Casablanca, and beyond."
-            />
             <div className={styles.grid}>
                 <div className={styles.info}>
                     <h1 className={styles.title}>Get in Touch</h1>
