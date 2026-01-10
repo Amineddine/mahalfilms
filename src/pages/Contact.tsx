@@ -1,8 +1,11 @@
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, CheckCircle } from 'lucide-react';
 import { Button } from '../components/Button';
 import styles from './Contact.module.css';
+import { useForm, ValidationError } from '@formspree/react';
 
 export const Contact = () => {
+    const [state, handleSubmit] = useForm("mkoowkqn");
+
     return (
         <div className="container section">
             <div className={styles.grid}>
@@ -24,8 +27,9 @@ export const Contact = () => {
                         <div className={styles.detail}>
                             <Phone className={styles.icon} />
                             <div>
-                                <h3>Phone</h3>
-                                <p>+212 661 123 456</p>
+                                <h3>Phones</h3>
+                                <p>Aziz Hamichi: +212 6 61 23 10 31</p>
+                                <p>Gilles Castera: +33 6 07 84 14 51</p>
                             </div>
                         </div>
                         <div className={styles.detail}>
@@ -49,38 +53,52 @@ export const Contact = () => {
                 </div>
 
                 <div className={styles.formWrapper}>
-                    <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
-                        <div className={styles.formGroup}>
-                            <label>Name</label>
-                            <input type="text" placeholder="Your Name" required />
+                    {state.succeeded ? (
+                        <div className={styles.successMessage}>
+                            <CheckCircle size={48} color="var(--color-accent)" />
+                            <h2>Message Sent!</h2>
+                            <p>Thank you for contacting Mahal Films. We will get back to you shortly.</p>
+                            <Button variant="outline" size="sm" onClick={() => window.location.reload()}>
+                                Send Another
+                            </Button>
                         </div>
-                        <div className={styles.formGroup}>
-                            <label>Email</label>
-                            <input type="email" placeholder="project@studio.com" required />
-                        </div>
-                        <div className={styles.formGroup}>
-                            <label>Production Type</label>
-                            <select>
-                                <option>Feature Film</option>
-                                <option>TV Series</option>
-                                <option>Commercial</option>
-                                <option>Documentary</option>
-                                <option>Still Photography</option>
-                                <option>Other</option>
-                            </select>
-                        </div>
-                        <div className={styles.formGroup}>
-                            <label>Estimated Dates</label>
-                            <input type="text" placeholder="e.g. Oct - Nov 2025" />
-                        </div>
-                        <div className={styles.formGroup}>
-                            <label>Message</label>
-                            <textarea rows={5} placeholder="Tell us about your project..." required></textarea>
-                        </div>
-                        <Button variant="primary" size="lg" type="submit" style={{ width: '100%' }}>
-                            Send Request
-                        </Button>
-                    </form>
+                    ) : (
+                        <form className={styles.form} onSubmit={handleSubmit}>
+                            <div className={styles.formGroup}>
+                                <label htmlFor="name">Name</label>
+                                <input id="name" type="text" name="name" placeholder="Your Name" required />
+                                <ValidationError prefix="Name" field="name" errors={state.errors} />
+                            </div>
+                            <div className={styles.formGroup}>
+                                <label htmlFor="email">Email</label>
+                                <input id="email" type="email" name="email" placeholder="project@studio.com" required />
+                                <ValidationError prefix="Email" field="email" errors={state.errors} />
+                            </div>
+                            <div className={styles.formGroup}>
+                                <label htmlFor="productionType">Production Type</label>
+                                <select id="productionType" name="productionType">
+                                    <option>Feature Film</option>
+                                    <option>TV Series</option>
+                                    <option>Commercial</option>
+                                    <option>Documentary</option>
+                                    <option>Still Photography</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div className={styles.formGroup}>
+                                <label htmlFor="dates">Estimated Dates</label>
+                                <input id="dates" type="text" name="dates" placeholder="e.g. Oct - Nov 2025" />
+                            </div>
+                            <div className={styles.formGroup}>
+                                <label htmlFor="message">Message</label>
+                                <textarea id="message" name="message" rows={5} placeholder="Tell us about your project..." required></textarea>
+                                <ValidationError prefix="Message" field="message" errors={state.errors} />
+                            </div>
+                            <Button variant="primary" size="lg" type="submit" style={{ width: '100%' }} disabled={state.submitting}>
+                                {state.submitting ? 'Sending...' : 'Send Request'}
+                            </Button>
+                        </form>
+                    )}
                 </div>
             </div>
         </div>

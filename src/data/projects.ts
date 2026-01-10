@@ -164,14 +164,14 @@ const getPoster = (title: string) => {
 };
 
 export const projects: Project[] = [
-    ...gillesProjectsRaw.map(p => ({
-        ...p,
-        founder: 'Gilles Castera' as const,
-        poster: getPoster(p.title)
-    })),
     ...azizProjectsRaw.map(p => ({
         ...p,
         founder: 'Aziz Hamichi' as const,
+        poster: getPoster(p.title)
+    })),
+    ...gillesProjectsRaw.map(p => ({
+        ...p,
+        founder: 'Gilles Castera' as const,
         poster: getPoster(p.title)
     }))
 ];
