@@ -1,3 +1,4 @@
+import { SEO } from '../components/SEO';
 import { useState } from 'react';
 import { projects } from '../data/projects';
 import type { Project } from '../data/projects';
@@ -16,6 +17,10 @@ export const Portfolio = () => {
 
     return (
         <div className="container section">
+            <SEO
+                title="Portfolio - Films Shot in Morocco"
+                description="Explore our portfolio of international feature films and series shot in Morocco, including Gladiator 2, Game of Thrones, Inception, and more."
+            />
             <div className={styles.header}>
                 <h1 className={styles.title}>Our Portfolio</h1>
                 <div className={styles.filters}>

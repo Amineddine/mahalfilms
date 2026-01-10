@@ -1,5 +1,6 @@
 import { Button } from '../components/Button';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
 import styles from './Services.module.css';
 
 const services = [
@@ -61,7 +62,11 @@ const services = [
 
 export const Services = () => {
     return (
-        <div className="container section">
+        <section className={`section container`}>
+            <SEO
+                title="Our Services - Permits, Casting, Locations"
+                description="Comprehensive film production services in Morocco including shooting permits, customs clearance, location scouting, casting, and equipment rental."
+            />
             <div className={styles.header}>
                 <h1 className={styles.title}>Our Services</h1>
                 <p className={styles.subtitle}>
@@ -87,6 +92,6 @@ export const Services = () => {
                     </div>
                 ))}
             </div>
-        </div>
+        </section>
     );
 };
