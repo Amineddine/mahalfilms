@@ -9,7 +9,7 @@ export const Home = () => {
             <Hero
                 videoSrc="/Escape from Mogadishu _ UK Trailer _ 2022 _ Real life escape thriller.mp4"
                 title={<>Production Services <br /><span className="text-gradient">in Morocco</span></>}
-                subtitle="Complete professional & logistical support for international and local productions. We bring your vision to life."
+                subtitle="Your premier partner for film production in Morocco. We provide complete production services in Morocco, from permits to locations, for international cinema and TV."
                 showActions={true}
             />
             <TrustSection />
