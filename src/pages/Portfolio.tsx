@@ -18,6 +18,9 @@ export const Portfolio = () => {
         <div className="container section">
             <div className={styles.header}>
                 <h1 className={styles.title}>Our Portfolio</h1>
+                <p className={styles.disclaimer} style={{ maxWidth: '800px', margin: '1rem auto', fontSize: '0.9rem', opacity: 0.8, fontStyle: 'italic' }}>
+                    Note: The following projects demonstrate the extensive experience of our founders. While not all were produced by Mahal Films directly, Gilles Castera and Aziz Hamichi played key professional roles in their execution, contributing to their success in Morocco.
+                </p>
                 <div className={styles.filters}>
                     {(['All', 'Gilles Castera', 'Aziz Hamichi'] as FilterType[]).map(f => (
                         <button

@@ -65,7 +65,7 @@ export const Services = () => {
             <div className={styles.header}>
                 <h1 className={styles.title}>Our Services</h1>
                 <p className={styles.subtitle}>
-                    Mahal Films delivers world-class film production services in Morocco. Our local expertise ensures your shoot runs smoothly, covering everything from government authorizations to equipment leasing.
+                    Mahal Films delivers world-class film production services in Morocco. <span style={{ opacity: 0.8 }}>Services de production cinématographique complets pour vos tournages au Maroc.</span> Our local expertise ensures your shoot runs smoothly, covering everything from government authorizations to equipment leasing.
                 </p>
             </div>
 

@@ -6,7 +6,7 @@ import React from 'react';
 interface HeroProps {
     videoSrc?: string;
     title: React.ReactNode;
-    subtitle?: string;
+    subtitle?: React.ReactNode;
     showActions?: boolean;
 }
 

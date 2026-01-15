@@ -68,6 +68,22 @@ const gillesProjectsRaw: { title: string; type: 'Film' | 'Series' }[] = [
 ];
 
 const azizProjectsRaw: { title: string; type: 'Film' | 'Series' }[] = [
+    { title: "Alexander", type: "Film" }, // New
+    { title: "Babel", type: "Film" }, // New
+    { title: "Catharsys or The Afina Tales of the Lost World", type: "Film" }, // New
+    { title: "Corrupt Minds", type: "Film" }, // New
+    { title: "Days of Glory", type: "Film" }, // New
+    { title: "Hidalgo", type: "Film" }, // New
+    { title: "Judas", type: "Film" }, // New
+    { title: "Road Nine", type: "Film" }, // New
+    { title: "Rules of Engagement", type: "Film" }, // New
+    { title: "Sahara", type: "Film" }, // New
+    { title: "Slave of Dreams", type: "Film" }, // New
+    { title: "Solomon & Sheba", type: "Film" }, // New
+    { title: "Spy Game", type: "Film" }, // New
+    { title: "The Four Feathers", type: "Film" }, // New (duplicate check needed? Gilles has it too, but maybe distinct poster or version)
+    { title: "Tora Bora", type: "Film" }, // New
+
     { title: "Escape from Mogadishu", type: "Film" },
     { title: "Kingdom of Heaven", type: "Film" },
     { title: "Le Salaire de la Peur", type: "Film" },
@@ -77,6 +93,36 @@ const azizProjectsRaw: { title: string; type: 'Film' | 'Series' }[] = [
     { title: "That Dirty Black Bag", type: "Film" },
     { title: "The Mummy Returns", type: "Film" },
     { title: "Traitor", type: "Film" },
+    { title: "Army of One", type: "Film" },
+    { title: "Atlantis", type: "Series" },
+    { title: "Building the Impossible", type: "Film" },
+    { title: "Captain Phillips", type: "Film" },
+    { title: "Complicit", type: "Film" },
+    { title: "Eco-Challenge Morocco", type: "Series" },
+    { title: "Expedition Week", type: "Series" },
+    { title: "Gautamiputra Satakarni", type: "Film" },
+    { title: "Heartbreaker", type: "Film" },
+    { title: "Hideous Kinky", type: "Film" },
+    { title: "In the Valley of Elah", type: "Film" },
+    { title: "Italians", type: "Film" },
+    { title: "Killer Elite", type: "Film" },
+    { title: "Live from Baghdad", type: "Film" },
+    { title: "Lumina", type: "Film" },
+    { title: "Mamma Mia!", type: "Film" },
+    { title: "Occupation", type: "Film" },
+    { title: "Poirot", type: "Series" },
+    { title: "Pope Joan", type: "Film" },
+    { title: "Rendition", type: "Film" },
+    { title: "Snapshots", type: "Film" },
+    { title: "Spuren der Rache", type: "Film" },
+    { title: "Stop-Loss", type: "Film" },
+    { title: "The Honorable Woman", type: "Series" },
+    { title: "The Nativity Story", type: "Film" },
+    { title: "Timbuktu", type: "Film" },
+    { title: "Un Burka Por Amor", type: "Series" },
+    { title: "White City", type: "Film" },
+    { title: "Our Men", type: "Film" },
+    { title: "The Way Back", type: "Film" },
     { title: "Game of Thrones", type: "Series" },
     { title: "Transporter: The Series", type: "Series" },
     { title: "ZeroZeroZero", type: "Series" },
@@ -105,7 +151,6 @@ const imageMap: Record<string, string> = {
     "munich": "Munich_1_Poster.jpg",
     "patrick melrose": "Patrick_Melrose_Poster.jpeg",
     "prince of persia": "Prince_of_Persia_poster.jpg",
-    // "rebecca": "Rebecca_poster.jpeg", // Not in list?
     "rhinoceros hunting in budapest": "Rhinoceros hunting in budapest.jpg",
     "rush hour 3": "Rush_Hour_3_poster.png",
     "safe house": "Safe_House.jpg",
@@ -131,7 +176,7 @@ const imageMap: Record<string, string> = {
     "hansel & gretel: witch hunters": "hansel_and_grettel.jpg",
     "inglourious basterds": "inglourious Basterds.jpg",
     "kingdom of heaven": "kingdom of heaven.jpg",
-    "double down": "l'homme de la riviera.jpg", // L'Homme de la Riviera
+    "double down": "l'homme de la riviera.jpg",
     "le salaire de la peur": "le salaire de la peur.jfif",
     "les harkis": "les harkis.jfif",
     "me before you": "mebeforeyou.jpg",
@@ -155,10 +200,57 @@ const imageMap: Record<string, string> = {
     "transporter: the series": "transporter the series.jpg",
     "wonder woman": "wonderwoman.jpg",
     "the world is not enough": "world is not enough.jfif",
-    "zerozerozero": "zerozerozero.jfif"
+    "zerozerozero": "zerozerozero.jfif",
+    "army of one": "Army of One (2016).jpeg",
+    "atlantis": "Atlantis (2013).jpg",
+    "building the impossible": "Building the Impossible The Seven Wonders of the Ancient World (2000).jfif",
+    "captain phillips": "Captain_Phillips_Poster.jpg",
+    "complicit": "Complicit (2013).jpg",
+    "eco-challenge morocco": "Eco-Challenge Morocco (1998).jpg",
+    "expedition week": "Expedition Week (2011).jpg",
+    "gautamiputra satakarni": "Gautamiputra Satakarni.jpg",
+    "heartbreaker": "Heartbreaker (2010).jpg",
+    "hideous kinky": "Hideous Kinky (1998).jpg",
+    "in the valley of elah": "In the Valley of Elah (2007).jpg",
+    "italians": "Italians (2009).jpg",
+    "killer elite": "Killer Elite (2011).jpg",
+    "live from baghdad": "Live from Baghdad (2002).jpg",
+    "lumina": "Lumina (2021).jpg",
+    "mamma mia!": "Mamma Mia! (2008).jpg",
+    "occupation": "Occupation (2009).jpg",
+    "poirot": "Poirot (2008).jpg",
+    "pope joan": "Pope Joan (2009).jpg",
+    "rendition": "Rendition (2007).jpg",
+    "snapshots": "Snapshots (2002).jpg",
+    "spuren der rache": "Spuren der Rache (2016).jpg",
+    "stop-loss": "Stop-Loss (2008).jpg",
+    "the honorable woman": "The Honorable Woman (2014).jpg",
+    "the nativity story": "The Nativity Story (2006).jpg",
+    "timbuktu": "Timbuktu (2004).jpg",
+    "un burka por amor": "Un burka por amor (2009).jpg",
+    "white city": "White City (2015) (TV Movie).jpg",
+    "our men": "our men.jpg",
+    "the way back": "the way back.jfif",
+    // Round 2 New Mappings
+    "alexander": "Alexander (2004).jpg",
+    "babel": "Babel (2006).jpg",
+    "catharsys or the afina tales of the lost world": "Catharsys or The Afina Tales of the Lost World (2018).jpg",
+    "corrupt minds": "Corrupt Minds (2014).jpg",
+    "days of glory": "Days of Glory (2006).jpg",
+    "hidalgo": "Hidalgo (2004).jpg",
+    "judas": "Judas (2004).jpg",
+    "road nine": "Road Nine (2012).jpg",
+    "rules of engagement": "Rules of Engagement (2000).jpg",
+    "sahara": "Sahara (2005).jpg",
+    "slave of dreams": "Slave of Dreams (1995).jpg",
+    "solomon & sheba": "Solomon & Sheba (1995).jpg",
+    "spy game": "Spy Game (2001).jpg",
+    // "the four feathers" already handled
+    "tora bora": "Tora Bora (2011).jpg"
 };
 
 const getPoster = (title: string) => {
+    // Normalization removes special chars for key matching
     const key = Object.keys(imageMap).find(k => normalize(k) === normalize(title));
     return key ? `/${imageMap[key]}` : undefined;
 };
