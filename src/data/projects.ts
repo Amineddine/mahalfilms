@@ -5,15 +5,17 @@ export interface Project {
     founder: 'Gilles Castera' | 'Aziz Hamichi';
     poster?: string;
     role?: string;
-    badge?: string; // New field for custom badge text
+    badge?: string;
 }
 
-// Helper to determine year for sorting (Aziz only for now as requested)
-const azizProjectsRaw: { title: string; type: 'Film' | 'Series'; year: string; role?: string; badge?: string }[] = [
-    // Mahal Films Productions
+// Pinned Mahal Films Projects (Fixed Order)
+const mahalFilmsProjects: { title: string; type: 'Film' | 'Series'; year: string; role?: string; badge?: string }[] = [
     { title: "Extra Terroriste", type: "Film", year: "2024", role: "Producer: Aziz Hamichi (Mahal Films)", badge: "Mahal Films" },
     { title: "Corrupt Minds", type: "Film", year: "2014", role: "Producer: Aziz Hamichi (Mahal Films)", badge: "Mahal Films" },
+];
 
+// General Aziz Projects (Sorted by Year)
+const azizOtherProjectsRaw: { title: string; type: 'Film' | 'Series'; year: string; role?: string; badge?: string }[] = [
     { title: "Le Salaire de la Peur", type: "Film", year: "2024" },
     { title: "Escape from Mogadishu", type: "Film", year: "2021" },
     { title: "Lumina", type: "Film", year: "2021" },
@@ -240,6 +242,7 @@ const imageMap: Record<string, string> = {
     "alexander": "Alexander (2004).jpg",
     "babel": "Babel (2006).jpg",
     "catharsys or the afina tales of the lost world": "Catharsys or The Afina Tales of the Lost World (2018).jpg",
+    // "corrupt minds": "Corrupt Minds (2014).jpg", // Removed from sorted list
     "days of glory": "Days of Glory (2006).jpg",
     "hidalgo": "Hidalgo (2004).jpg",
     "judas": "Judas (2004).jpg",
@@ -259,7 +262,8 @@ const getPoster = (title: string) => {
     return key ? `/${imageMap[key]}` : undefined;
 };
 
-const sortedAzizProjects = azizProjectsRaw.sort((a, b) => {
+// Sort ONLY the general projects, keeping Mahal Films pinned
+const sortedAzizProjects = azizOtherProjectsRaw.sort((a, b) => {
     if (a.year && b.year) {
         return parseInt(b.year) - parseInt(a.year);
     }
@@ -267,11 +271,19 @@ const sortedAzizProjects = azizProjectsRaw.sort((a, b) => {
 });
 
 export const projects: Project[] = [
+    // 1. Pinned Mahal Films Projects (No Sorting forced)
+    ...mahalFilmsProjects.map(p => ({
+        ...p,
+        founder: 'Aziz Hamichi' as const,
+        poster: getPoster(p.title)
+    })),
+    // 2. Sorted General Projects
     ...sortedAzizProjects.map(p => ({
         ...p,
         founder: 'Aziz Hamichi' as const,
         poster: getPoster(p.title)
     })),
+    // 3. Gilles Projects
     ...gillesProjectsRaw.map(p => ({
         ...p,
         founder: 'Gilles Castera' as const,
