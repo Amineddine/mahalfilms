@@ -43,7 +43,22 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                             <span className={styles.tag}>{project.type}</span>
                             <span className={styles.founder}>Featured: {project.founder}</span>
                         </div>
-                        {/* Corrected copy as requested */}
+
+                        {project.role && (
+                            <div style={{
+                                marginTop: '1rem',
+                                padding: '0.75rem',
+                                backgroundColor: 'rgba(212, 163, 115, 0.1)',
+                                border: '1px solid var(--color-accent)',
+                                borderRadius: '4px',
+                                color: 'var(--color-accent)',
+                                fontWeight: 500,
+                                fontSize: '0.95rem'
+                            }}>
+                                {project.role}
+                            </div>
+                        )}
+
                         <p className={styles.description}>
                             Notable project featuring the participation and expertise of {project.founder}.
                         </p>

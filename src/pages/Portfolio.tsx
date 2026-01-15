@@ -58,7 +58,9 @@ export const Portfolio = () => {
                             <div className={styles.meta}>
                                 <span>{project.type}</span>
                                 {filter === 'All' && (
-                                    <span className={styles.founderBadge}>{project.founder.split(' ')[0]}</span>
+                                    <span className={styles.founderBadge}>
+                                        {project.badge ? project.badge : project.founder.split(' ')[0]}
+                                    </span>
                                 )}
                             </div>
                         </div>

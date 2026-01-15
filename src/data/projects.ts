@@ -4,7 +4,74 @@ export interface Project {
     year?: string;
     founder: 'Gilles Castera' | 'Aziz Hamichi';
     poster?: string;
+    role?: string;
+    badge?: string; // New field for custom badge text
 }
+
+// Helper to determine year for sorting (Aziz only for now as requested)
+const azizProjectsRaw: { title: string; type: 'Film' | 'Series'; year: string; role?: string; badge?: string }[] = [
+    // Mahal Films Productions
+    { title: "Extra Terroriste", type: "Film", year: "2024", role: "Producer: Aziz Hamichi (Mahal Films)", badge: "Mahal Films" },
+    { title: "Corrupt Minds", type: "Film", year: "2014", role: "Producer: Aziz Hamichi (Mahal Films)", badge: "Mahal Films" },
+
+    { title: "Le Salaire de la Peur", type: "Film", year: "2024" },
+    { title: "Escape from Mogadishu", type: "Film", year: "2021" },
+    { title: "Lumina", type: "Film", year: "2021" },
+    { title: "Les Harkis", type: "Film", year: "2022" },
+    { title: "That Dirty Black Bag", type: "Film", year: "2022" },
+    { title: "Our Men", type: "Film", year: "2020" },
+    { title: "ZeroZeroZero", type: "Series", year: "2019" },
+    { title: "Catharsys or The Afina Tales of the Lost World", type: "Film", year: "2018" },
+    { title: "Gautamiputra Satakarni", type: "Film", year: "2017" },
+    { title: "Army of One", type: "Film", year: "2016" },
+    { title: "Spuren der Rache", type: "Film", year: "2016" },
+    { title: "Mission: Impossible", type: "Film", year: "2015" },
+    { title: "White City", type: "Film", year: "2015" },
+    { title: "The Honorable Woman", type: "Series", year: "2014" },
+    { title: "Captain Phillips", type: "Film", year: "2013" },
+    { title: "Atlantis", type: "Series", year: "2013" },
+    { title: "Complicit", type: "Film", year: "2013" },
+    { title: "Transporter: The Series", type: "Series", year: "2012" },
+    { title: "Road Nine", type: "Film", year: "2012" },
+    { title: "Game of Thrones", type: "Series", year: "2011" },
+    { title: "Killer Elite", type: "Film", year: "2011" },
+    { title: "Expedition Week", type: "Series", year: "2011" },
+    { title: "Tora Bora", type: "Film", year: "2011" },
+    { title: "Prince of Persia", type: "Film", year: "2010" },
+    { title: "Heartbreaker", type: "Film", year: "2010" },
+    { title: "The Way Back", type: "Film", year: "2010" },
+    { title: "Italians", type: "Film", year: "2009" },
+    { title: "Pope Joan", type: "Film", year: "2009" },
+    { title: "Un Burka Por Amor", type: "Series", year: "2009" },
+    { title: "Occupation", type: "Film", year: "2009" },
+    { title: "Traitor", type: "Film", year: "2008" },
+    { title: "Mamma Mia!", type: "Film", year: "2008" },
+    { title: "Stop-Loss", type: "Film", year: "2008" },
+    { title: "Poirot", type: "Series", year: "2008" },
+    { title: "In the Valley of Elah", type: "Film", year: "2007" },
+    { title: "Rendition", type: "Film", year: "2007" },
+    { title: "Babel", type: "Film", year: "2006" },
+    { title: "Days of Glory", type: "Film", year: "2006" },
+    { title: "The Nativity Story", type: "Film", year: "2006" },
+    { title: "Kingdom of Heaven", type: "Film", year: "2005" },
+    { title: "Sahara", type: "Film", year: "2005" },
+    { title: "Alexander", type: "Film", year: "2004" },
+    { title: "Hidalgo", type: "Film", year: "2004" },
+    { title: "Judas", type: "Film", year: "2004" },
+    { title: "Timbuktu", type: "Film", year: "2004" },
+    { title: "Live from Baghdad", type: "Film", year: "2002" },
+    { title: "Snapshots", type: "Film", year: "2002" },
+    { title: "The Four Feathers", type: "Film", year: "2002" },
+    { title: "The Mummy Returns", type: "Film", year: "2001", badge: "Aziz & Gilles" },
+    { title: "Spy Game", type: "Film", year: "2001" },
+    { title: "Rules of Engagement", type: "Film", year: "2000" },
+    { title: "Building the Impossible", type: "Film", year: "2000" },
+    { title: "The Mummy", type: "Film", year: "1999", badge: "Aziz & Gilles" },
+    { title: "Hideous Kinky", type: "Film", year: "1998" },
+    { title: "Eco-Challenge Morocco", type: "Series", year: "1998" },
+    { title: "Slave of Dreams", type: "Film", year: "1995" },
+    { title: "Solomon & Sheba", type: "Film", year: "1995" },
+];
 
 const gillesProjectsRaw: { title: string; type: 'Film' | 'Series' }[] = [
     { title: "The Gallerist", type: "Film" },
@@ -49,6 +116,7 @@ const gillesProjectsRaw: { title: string; type: 'Film' | 'Series' }[] = [
     { title: "102 Dalmatians", type: "Film" },
     { title: "The World Is Not Enough", type: "Film" },
     { title: "The Mummy", type: "Film" },
+    { title: "The Mummy Returns", type: "Film" },
     { title: "Tomorrow Never Dies", type: "Film" },
     { title: "Rhinoceros Hunting in Budapest", type: "Film" },
     { title: "Incognito", type: "Film" },
@@ -67,72 +135,10 @@ const gillesProjectsRaw: { title: string; type: 'Film' | 'Series' }[] = [
     { title: "Sex and the City", type: "Series" },
 ];
 
-const azizProjectsRaw: { title: string; type: 'Film' | 'Series' }[] = [
-    { title: "Alexander", type: "Film" }, // New
-    { title: "Babel", type: "Film" }, // New
-    { title: "Catharsys or The Afina Tales of the Lost World", type: "Film" }, // New
-    { title: "Corrupt Minds", type: "Film" }, // New
-    { title: "Days of Glory", type: "Film" }, // New
-    { title: "Hidalgo", type: "Film" }, // New
-    { title: "Judas", type: "Film" }, // New
-    { title: "Road Nine", type: "Film" }, // New
-    { title: "Rules of Engagement", type: "Film" }, // New
-    { title: "Sahara", type: "Film" }, // New
-    { title: "Slave of Dreams", type: "Film" }, // New
-    { title: "Solomon & Sheba", type: "Film" }, // New
-    { title: "Spy Game", type: "Film" }, // New
-    { title: "The Four Feathers", type: "Film" }, // New (duplicate check needed? Gilles has it too, but maybe distinct poster or version)
-    { title: "Tora Bora", type: "Film" }, // New
-
-    { title: "Escape from Mogadishu", type: "Film" },
-    { title: "Kingdom of Heaven", type: "Film" },
-    { title: "Le Salaire de la Peur", type: "Film" },
-    { title: "Les Harkis", type: "Film" },
-    { title: "Mission: Impossible", type: "Film" },
-    { title: "Prince of Persia", type: "Film" },
-    { title: "That Dirty Black Bag", type: "Film" },
-    { title: "The Mummy Returns", type: "Film" },
-    { title: "Traitor", type: "Film" },
-    { title: "Army of One", type: "Film" },
-    { title: "Atlantis", type: "Series" },
-    { title: "Building the Impossible", type: "Film" },
-    { title: "Captain Phillips", type: "Film" },
-    { title: "Complicit", type: "Film" },
-    { title: "Eco-Challenge Morocco", type: "Series" },
-    { title: "Expedition Week", type: "Series" },
-    { title: "Gautamiputra Satakarni", type: "Film" },
-    { title: "Heartbreaker", type: "Film" },
-    { title: "Hideous Kinky", type: "Film" },
-    { title: "In the Valley of Elah", type: "Film" },
-    { title: "Italians", type: "Film" },
-    { title: "Killer Elite", type: "Film" },
-    { title: "Live from Baghdad", type: "Film" },
-    { title: "Lumina", type: "Film" },
-    { title: "Mamma Mia!", type: "Film" },
-    { title: "Occupation", type: "Film" },
-    { title: "Poirot", type: "Series" },
-    { title: "Pope Joan", type: "Film" },
-    { title: "Rendition", type: "Film" },
-    { title: "Snapshots", type: "Film" },
-    { title: "Spuren der Rache", type: "Film" },
-    { title: "Stop-Loss", type: "Film" },
-    { title: "The Honorable Woman", type: "Series" },
-    { title: "The Nativity Story", type: "Film" },
-    { title: "Timbuktu", type: "Film" },
-    { title: "Un Burka Por Amor", type: "Series" },
-    { title: "White City", type: "Film" },
-    { title: "Our Men", type: "Film" },
-    { title: "The Way Back", type: "Film" },
-    { title: "Game of Thrones", type: "Series" },
-    { title: "Transporter: The Series", type: "Series" },
-    { title: "ZeroZeroZero", type: "Series" },
-];
-
-// Helper to find image in public folder (simulated)
 const normalize = (str: string) => str.toLowerCase().replace(/[^a-z0-9]/g, '');
 
-// Known filename mappings based on user provide list + ls output
 const imageMap: Record<string, string> = {
+    // ... (Existing mappings)
     "102 dalmatians": "102 dalmatians.jfif",
     "2012": "2012.jpg",
     "as above, so below": "As_Above,_So_Below.jpg",
@@ -226,16 +232,14 @@ const imageMap: Record<string, string> = {
     "stop-loss": "Stop-Loss (2008).jpg",
     "the honorable woman": "The Honorable Woman (2014).jpg",
     "the nativity story": "The Nativity Story (2006).jpg",
-    "timbuktu": "Timbuktu (2004).jpg",
+    "timbuktu": "Timbuktu (2004) 2.jpg",
     "un burka por amor": "Un burka por amor (2009).jpg",
     "white city": "White City (2015) (TV Movie).jpg",
     "our men": "our men.jpg",
     "the way back": "the way back.jfif",
-    // Round 2 New Mappings
     "alexander": "Alexander (2004).jpg",
     "babel": "Babel (2006).jpg",
     "catharsys or the afina tales of the lost world": "Catharsys or The Afina Tales of the Lost World (2018).jpg",
-    "corrupt minds": "Corrupt Minds (2014).jpg",
     "days of glory": "Days of Glory (2006).jpg",
     "hidalgo": "Hidalgo (2004).jpg",
     "judas": "Judas (2004).jpg",
@@ -245,18 +249,25 @@ const imageMap: Record<string, string> = {
     "slave of dreams": "Slave of Dreams (1995).jpg",
     "solomon & sheba": "Solomon & Sheba (1995).jpg",
     "spy game": "Spy Game (2001).jpg",
-    // "the four feathers" already handled
-    "tora bora": "Tora Bora (2011).jpg"
+    "tora bora": "Tora Bora (2011).jpg",
+    "extra terroriste": "Extra Terroriste.jpeg", // New
+    "corrupt minds": "Corrupt Minds (2014).jpg"
 };
 
 const getPoster = (title: string) => {
-    // Normalization removes special chars for key matching
     const key = Object.keys(imageMap).find(k => normalize(k) === normalize(title));
     return key ? `/${imageMap[key]}` : undefined;
 };
 
+const sortedAzizProjects = azizProjectsRaw.sort((a, b) => {
+    if (a.year && b.year) {
+        return parseInt(b.year) - parseInt(a.year);
+    }
+    return 0;
+});
+
 export const projects: Project[] = [
-    ...azizProjectsRaw.map(p => ({
+    ...sortedAzizProjects.map(p => ({
         ...p,
         founder: 'Aziz Hamichi' as const,
         poster: getPoster(p.title)
