@@ -32,9 +32,9 @@ export const Navbar = () => {
 
     return (
         <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''}`}>
-            <div className={`container ${styles.container}`}>
+            <div className={styles.container}>
                 <Link to="/" className={styles.logo}>
-                    <img src="/mahalfilmslogo.png" alt="MAHAL FILMS" style={{ height: '50px', width: 'auto' }} />
+                    <img src="/mahalfilmslogo.png" alt="MAHAL FILMS" />
                 </Link>
 
                 {/* Desktop Nav */}
@@ -49,26 +49,42 @@ export const Navbar = () => {
                         </Link>
                     ))}
                     <Link to="/contact">
-                        <Button variant="primary" size="sm">Get a Quote</Button>
+                        {/* Changed variant to outline or ghost to fit inside the pill better, 
+                            or keep primary but smaller */}
+                        <Button variant="primary" size="sm" style={{ padding: '0.5rem 1.25rem' }}>Quote</Button>
                     </Link>
                 </div>
 
                 {/* Mobile Toggle */}
-                <button className={styles.mobileToggle} onClick={() => setIsOpen(!isOpen)}>
-                    {isOpen ? <X /> : <Menu />}
+                <button className={styles.mobileToggle} onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+                    {isOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
 
                 {/* Mobile Nav */}
                 <div className={`${styles.mobileNav} ${isOpen ? styles.open : ''}`}>
+                    {/* Mobile Close Button (Extra, for better UX inside the fullscreen menu) */}
+                    <button
+                        className={styles.mobileToggle}
+                        onClick={() => setIsOpen(false)}
+                        style={{ position: 'absolute', top: '2rem', right: '2rem', display: 'block' }}
+                    >
+                        <X size={32} />
+                    </button>
+
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
                             to={link.path}
                             className={styles.mobileNavLink}
+                            onClick={() => setIsOpen(false)}
                         >
                             {link.name}
                         </Link>
                     ))}
+
+                    <Link to="/contact" onClick={() => setIsOpen(false)} style={{ marginTop: '2rem' }}>
+                        <Button variant="primary" size="lg">Get a Quote</Button>
+                    </Link>
                 </div>
             </div>
         </nav>

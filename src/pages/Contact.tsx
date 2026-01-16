@@ -22,6 +22,9 @@ export const Contact = () => {
                             <div>
                                 <h3>Email</h3>
                                 <p>contact@mahalfilms.com</p>
+                                <p>admin@mahalfilms.com</p>
+                                <p>azizhamichi@mahalfilms.com</p>
+                                <p>gillescastera@mahalfilms.com</p>
                             </div>
                         </div>
                         <div className={styles.detail}>
