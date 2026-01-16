@@ -1,15 +1,17 @@
 import styles from './About.module.css';
 import { Hero } from '../components/Hero';
+import { type Project, projects } from '../data/projects';
+import { FilmStrip } from '../components/FilmStrip';
 
 const founders = [
     {
-        name: 'Gilles Castera',
+        name: 'Gilles Castera' as const,
         role: 'Founder & Producer',
         image: '/gilles castera.jpeg',
         bio: 'With decades of experience in the international film industry, leading major productions across Morocco.'
     },
     {
-        name: 'Aziz Hamichi',
+        name: 'Aziz Hamichi' as const,
         role: 'Founder & Producer',
         image: '/aziz hamichi.jpeg',
         bio: 'An expert in local logistics and government relations, ensuring seamless operations for every shoot.'
@@ -17,6 +19,11 @@ const founders = [
 ];
 
 export const About = () => {
+    // Helper to get projects for a founder
+    const getFounderProjects = (founderName: Project['founder']) => {
+        return projects.filter(p => p.founder === founderName);
+    };
+
     return (
         <div className={styles.aboutPage}>
             <Hero
@@ -49,14 +56,19 @@ export const About = () => {
                     <h2 className={styles.sectionTitle}>The Founders</h2>
                     <div className={styles.foundersGrid}>
                         {founders.map((founder, idx) => (
-                            <div key={idx} className={styles.founderCard}>
-                                <div className={styles.imageWrapper}>
-                                    <img src={founder.image} alt={founder.name} />
+                            <div key={idx} className={styles.founderGroup}>
+                                <div className={styles.founderCard}>
+                                    <div className={styles.imageWrapper}>
+                                        <img src={founder.image} alt={founder.name} />
+                                    </div>
+                                    <div className={styles.founderInfo}>
+                                        <h3>{founder.name}</h3>
+                                        <span className={styles.role}>{founder.role}</span>
+                                        <p>{founder.bio}</p>
+                                    </div>
                                 </div>
-                                <div className={styles.founderInfo}>
-                                    <h3>{founder.name}</h3>
-                                    <span className={styles.role}>{founder.role}</span>
-                                    <p>{founder.bio}</p>
+                                <div className={styles.founderFilms}>
+                                    <FilmStrip projects={getFounderProjects(founder.name)} />
                                 </div>
                             </div>
                         ))}

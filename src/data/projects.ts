@@ -71,8 +71,7 @@ const azizOtherProjectsRaw: { title: string; type: 'Film' | 'Series'; year: stri
     { title: "The Mummy", type: "Film", year: "1999", badge: "Aziz & Gilles" },
     { title: "Hideous Kinky", type: "Film", year: "1998" },
     { title: "Eco-Challenge Morocco", type: "Series", year: "1998" },
-    { title: "Slave of Dreams", type: "Film", year: "1995" },
-    { title: "Solomon & Sheba", type: "Film", year: "1995" },
+    { title: "Eco-Challenge Morocco", type: "Series", year: "1998" },
 ];
 
 const gillesProjectsRaw: { title: string; type: 'Film' | 'Series' }[] = [
