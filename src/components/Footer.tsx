@@ -19,8 +19,10 @@ export const Footer = () => {
                     </div>
                     <div className={styles.contact}>
                         <p>Email: contact@mahalfilms.com</p>
+                        <p>Email: l.khabid@mahalfilms.com</p>
                         <p>Aziz Hamichi: +212 6 61 23 10 31</p>
                         <p>Gilles Castera: +33 6 07 84 14 51</p>
+                        <p>Lahoucine Khabid: +212 661-283411</p>
                     </div>
                 </div>
                 <div className={styles.bottom}>

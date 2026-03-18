@@ -25,6 +25,7 @@ export const Contact = () => {
                                 <p>admin@mahalfilms.com</p>
                                 <p>azizhamichi@mahalfilms.com</p>
                                 <p>gillescastera@mahalfilms.com</p>
+                                <p>l.khabid@mahalfilms.com</p>
                             </div>
                         </div>
                         <div className={styles.detail}>
@@ -33,6 +34,7 @@ export const Contact = () => {
                                 <h3>Phones</h3>
                                 <p>Aziz Hamichi: +212 6 61 23 10 31</p>
                                 <p>Gilles Castera: +33 6 07 84 14 51</p>
+                                <p>Lahoucine Khabid: +212 661-283411</p>
                             </div>
                         </div>
                         <div className={styles.detail}>
