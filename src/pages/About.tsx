@@ -15,6 +15,12 @@ const founders = [
         role: 'Founder & Producer',
         image: '/aziz hamichi.jpeg',
         bio: 'An expert in local logistics and government relations, ensuring seamless operations for every shoot.'
+    },
+    {
+        name: 'Lahoucine Khabid' as const,
+        role: 'Production Manager',
+        image: '/lahoucine.jpeg',
+        bio: 'A dedicated production manager ensuring every project runs smoothly from pre-production through wrap.'
     }
 ];
 
@@ -53,7 +59,7 @@ export const About = () => {
 
             <section className={`section ${styles.foundersSection}`}>
                 <div className="container">
-                    <h2 className={styles.sectionTitle}>The Founders</h2>
+                    <h2 className={styles.sectionTitle}>Our Team</h2>
                     <div className={styles.foundersGrid}>
                         {founders.map((founder, idx) => (
                             <div key={idx} className={styles.founderGroup}>

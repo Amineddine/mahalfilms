@@ -2,7 +2,7 @@ export interface Project {
     title: string;
     type: 'Film' | 'Series';
     year?: string;
-    founder: 'Gilles Castera' | 'Aziz Hamichi';
+    founder: 'Gilles Castera' | 'Aziz Hamichi' | 'Lahoucine Khabid';
     poster?: string;
     role?: string;
     badge?: string;
